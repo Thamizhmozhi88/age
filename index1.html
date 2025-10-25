@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Advanced Age Calculator</title>
+  <style>
+    body {
+      background: linear-gradient(135deg, #a1c4fd, #c2e9fb);
+      font-family: 'Poppins', sans-serif;
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+    }
+    h2 {
+      color: #333;
+      margin-bottom: 10px;
+    }
+    input, button {
+      padding: 10px;
+      border: none;
+      border-radius: 8px;
+      margin: 5px;
+      font-size: 16px;
+    }
+    button {
+      cursor: pointer;
+      background-color: #007bff;
+      color: white;
+      transition: 0.3s;
+    }
+    button:hover {
+      background-color: #0056b3;
+    }
+    #result {
+      margin-top: 20px;
+      font-size: 18px;
+      font-weight: bold;
+      animation: fadeIn 0.8s;
+    }
+    @keyframes fadeIn {
+      from {opacity: 0;}
+      to {opacity: 1;}
+    }
+    #today {
+      color: #444;
+      font-size: 14px;
+      margin-bottom: 10px;
+    }
+  </style>
+</head>
+<body>
+
+  <h2>🎉 Advanced Age Calculator 🎉</h2>
+  <p id="today"></p>
+  <input type="date" id="dob">
+  <button onclick="calculateAge()">Calculate Age</button>
+  <button onclick="reset()">Clear</button>
+  <h3 id="result"></h3>
+
+  <script>
+    // Show today’s date
+    const todayElement = document.getElementById("today");
+    const todayDate = new Date().toLocaleDateString();
+    todayElement.innerText = "📅 Today: " + todayDate;
+
+    function calculateAge() {
+      const dob = document.getElementById("dob").value;
+      const result = document.getElementById("result");
+
+      if (!dob) {
+        result.innerText = "⚠ Please select your date of birth!";
+        return;
+      }
+
+      const birthDate = new Date(dob);
+      const today = new Date();
+
+      let years = today.getFullYear() - birthDate.getFullYear();
+      let months = today.getMonth() - birthDate.getMonth();
+      let days = today.getDate() - birthDate.getDate();
+
+      if (days < 0) {
+        months--;
+        days += new Date(today.getFullYear(), today.getMonth(), 0).getDate();
+      }
+      if (months < 0) {
+        years--;
+        months += 12;
+      }
+
+      // Unique message
+      let message = "";
+      if (years < 13) message = "🧒 You're a curious kid!";
+      else if (years < 20) message = "🎓 Teenage dreams! Keep learning.";
+      else if (years < 35) message = "💪 In your prime — build your future!";
+      else if (years < 60) message = "✨ Experienced and ambitious!";
+      else message = "🌟 A wise soul with great stories!";
+
+      result.innerText = `🎂 You are ${years} years, ${months} months, and ${days} days old.\n${message}`;
+    }
+
+    function reset() {
+      document.getElementById("dob").value = "";
+      document.getElementById("result").innerText = "";
+    }
+  </script>
+
+</body>
+</html>
+
+
