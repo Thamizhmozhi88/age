@@ -7,17 +7,17 @@ It also displays a fun personalized message based on your age group!
 
 🧠 Features
 
-        Displays today’s date automatically
+   Displays today’s date automatically
         
-        Calculates exact age (years, months, days)
+   Calculates exact age (years, months, days)
         
-        Provides personalized messages by age group
+   Provides personalized messages by age group
         
-        Clean and modern UI with gradient background
+   Clean and modern UI with gradient background
         
-        Includes smooth animations for results
+   Includes smooth animations for results
         
-        Responsive and lightweight (HTML, CSS, JS only)
+   Responsive and lightweight (HTML, CSS, JS only)
 
 
 
